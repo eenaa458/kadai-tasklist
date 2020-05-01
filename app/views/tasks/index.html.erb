@@ -2,8 +2,10 @@
 
 <ul>
 <% @tasks.each do |task| %>
-    <li>
+  <li>
+<%= link_to task.id, task %>
+ : 
 <%= task.content %>        
-    </li>
+  </li>
 <% end %>
 </ul>
