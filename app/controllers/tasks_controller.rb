@@ -12,7 +12,15 @@ class TasksController < ApplicationController
   end
   
   def create
+    @task = Task.new(task_params)
     
+    if @task.save
+      flash[:success] = 'タスクが正常に作成されました'
+      redirect_to @task
+    else
+      flash.now[:danger] = 'タスクが作成されませんでした'
+      render :new
+    end
   end
   
   def edit
@@ -22,5 +30,11 @@ class TasksController < ApplicationController
   end
   
   def destroy
+  end
+  
+  private
+  
+  def task_params
+    params.require(:task).permit(:content)
   end
 end
