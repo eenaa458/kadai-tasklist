@@ -9,10 +9,4 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
-  
-  def limit_action
-    unless current_user.task
-      redirect_to root_url
-    end
-  end
 end
