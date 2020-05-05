@@ -30,6 +30,9 @@ class TasksController < ApplicationController
   end
   
   def edit
+    unless @task
+      redirect_to root_url
+    end
   end
   
   def update
@@ -53,7 +56,7 @@ class TasksController < ApplicationController
   private
   
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find_by(params[:id])
   end
   
   def task_params
