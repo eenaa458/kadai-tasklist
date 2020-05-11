@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   private
   def require_current_user
-    unless current_user
+    unless current_user 
       redirect_to root_url
     end
   end
